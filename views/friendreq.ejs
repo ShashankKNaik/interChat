@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="594717104883-vg999jqm2d0v3qsclbbo6q57bpqfsov4.apps.googleusercontent.com">
+  
+    <link rel="shortcut icon" type="image/svg" href="./images/favi.svg">
+    <link rel="stylesheet" href="css/style.css">
+    <title>interChat</title>
+</head>
+<body>
+    <div class="main col-sm-7 col-md-6 col-lg-4" id="container">
+        <div class="alert alert-warning float col-sm-6 col-md-5 col-lg-3 col-10" role="alert">
+            <span></span>
+           <button type="button" class="close" onclick="dis()" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+           </button>
+       </div>
+        <div class="nav-body" id="head">
+            <div class="head">
+                <h3 >interChat</h3>
+                <div class="d3">  
+                    <div class="dropdown ">
+                        <svg class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                            <path fill="currentColor" d="M12 7a2 2 0 1 0-.001-4.001A2 2 0 0 0 12 7zm0 2a2 2 0 1 0-.001 3.999A2 2 0 0 0 12 9zm0 6a2 2 0 1 0-.001 3.999A2 2 0 0 0 12 15z"></path>
+                        </svg>
+                        <div class="dropdown-menu mydrop" aria-labelledby="dropdownMenuButton">
+                          <div class="dropdown-item" onclick="signOut()" >Sign out</div>
+                          <div class="dropdown-item" href="#">Another action</div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <div class="nav">
+                <a href="/" class="col-4"><li>friends</li></a>
+                <a href="#" class="col-4 active"><li>requests</li></a>
+                <a href="/reqsent" class="col-4"><li>search</li></a>
+            </div>
+        </div>
+        <div class="list" id="body">
+            <% var data=JSON.parse(details) %>
+            <% if(data!='') { %>
+                <% data.forEach(function(data){ %>
+            <div class="fri" style="display: flex;align-items: center;">
+                <img src=<%= data.img %> alt="Loading..">
+                <div >
+                    <h5><%= data.fname %></h5>
+                    <p style="font-size:x-small;"><%= data.email %></p>
+                </div>
+                <div class="b">
+                    <button class="btn mb-1" onclick="approve('<%= data._id %>')">approve</button><br>
+                    <button class="btn" onclick="decline('<%= data._id %>')">decline</button>
+                </div>
+            </div>
+            <% })}%>
+        </div>
+    </div>
+    <div class="g-signin2" data-onsuccess="onLogIn" style="display: none;"></div>
+</body>
+
+<script src="./js/friendreq.js"></script>
+</html>

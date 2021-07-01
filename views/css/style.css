@@ -1,0 +1,259 @@
+.main{
+    height: 100vh;
+    background-color: rgb(43, 35, 35);
+    margin: auto;
+    overflow: auto;
+    padding: 15px;
+}
+.nav{
+    width: 100%;
+    color: white;
+    background-color: rgb(31, 31, 31);
+}
+
+a{
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    text-align: center;
+    background-color: #252222;
+}
+.head{
+    width: 100%;
+    color: white;
+    background-color: rgb(51, 45, 45);
+    padding: 15px;
+}
+.nav-body{
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+.mydrop{
+    background-color: #292929;
+    color: #ffffff;
+}
+
+.dropdown-item{
+    color: #ffffff;
+}
+
+.list{
+    color: white;
+    overflow: auto;
+    overflow-x: hidden;
+}
+.list::-webkit-scrollbar{
+    width: 4px;
+    
+}
+.list::-webkit-scrollbar-thumb{
+    background-color: #ffffff1f;
+    border-radius: 7px;
+}
+.fri{
+    width: 100%;
+    background-color: rgb(27, 27, 20);
+    padding: 10px;
+    display: flex;
+    margin-bottom: 2px;
+    cursor: pointer;
+}
+.fri div{
+    padding-left: 10px;
+}
+.fri p{
+    margin: 0;
+}
+.fri img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+}
+#signin{
+    height: 100%;
+    background-color: #f3f1f117;
+}
+#signin img{
+    width: 70px;
+    height: 65px;
+    position: absolute;
+    right: 70px;
+    z-index: 1;
+}
+.login{
+    width: 120px;
+    position: relative;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.sout{
+    width:100px;
+    margin: auto;
+}
+.head h3{
+    display: inline;
+}
+.head .d3{
+    float:right;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 50px;
+}
+.head .d3:hover,.chead .svg:hover,.imo:hover,.nav a:hover,.mydrop>div:hover{
+    background-color: #ffebcd2d;
+    color: white;
+    text-decoration: none;
+    transition: 500ms;
+}
+/* ----------------- */
+.chead{
+    padding: 10px;
+}
+#name{
+    font-size: large;
+}
+.chead .svg{
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 50px;
+}
+.chead svg{
+    width: 20px;
+    height: 20px;
+}
+.chead .svg{
+    padding: 10px 0px;
+}
+.chead img,.svg{
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+}
+
+.mhead{
+    height: 50px;
+    width: 100%;
+    background-color: rgb(190, 78, 78);
+}
+#form {width:100%;background: #211c1c; padding: 0.25rem; position: relative; bottom: 0; display: flex; height: 3rem; box-sizing: border-box; backdrop-filter: blur(10px); }
+#input {min-width: 70px; border: none; padding: 0 1rem; flex-grow: 1; border-radius: 2rem; margin: 0.25rem; }
+#input:focus { outline: none; }
+#form > button { background: #333; border: none; padding: 0 9px; margin: 0.25rem; border-radius: 50px; outline: none; color: #fff; }
+
+#messages { 
+    margin: 0; 
+    padding: 0; 
+}
+#messages > span { 
+    padding: 0.5rem 1rem; 
+    display: block;
+    float: left;
+    clear: both;
+    background-color: #020e17;
+    max-width: 75%;
+    margin-top: 2px;
+    border-radius: 10px;
+}
+#messages > span >p { 
+    margin: 0;
+    text-align: left;
+    font-size: xx-small;
+    color: #737373;
+}
+
+.float{
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+    z-index: 10;
+    display: none;
+}
+
+.imo{
+    padding: 5px;
+    border-radius: 50px;
+    color: white;
+    cursor: pointer;
+}
+#emoji{
+    display: none;
+    max-height: 30%;
+    overflow-y: scroll;
+}
+#emoji span{
+    cursor: pointer;
+    padding: 3px;
+    font-size: x-large;
+}
+#emoji::-webkit-scrollbar{
+    width: 4px;
+}
+#emoji::-webkit-scrollbar-thumb{
+    background-color: #ffffff1f;
+    border-radius: 7px;
+}
+.btn{
+    color: white;
+    background-color: rgb(36, 37, 75);
+    padding: 2px 7px;
+    width: 100%;
+
+}
+
+.b{
+    display: inline;
+    position: absolute;
+    right: 30px;
+}
+
+.btn:hover{
+    color: white;
+}
+
+.scroll-down {
+    position: fixed;
+    padding: 12px;
+    bottom: 70px;
+    background-color: #0e161b;
+    border-radius: 50px;
+    z-index: 1;
+    width: 42px;
+    height: 42px;
+    display: none;
+}
+.active{
+    background-color: #1d1b1b;
+}
+
+.fa-linkedin,.fa-github {
+    background: #1b1b1b;
+    color: white;
+    border-radius: 50px;
+    padding: 10px;
+  }
+  .fa-linkedin:hover,.fa-github:hover {
+    background: #151414;
+    color: white;
+    text-decoration: none;
+  }
+@media screen and (max-width:447px){
+    .main{
+        padding: 0;
+    }
+    .b{
+        right: 10px;
+    }
+    #messages > span { 
+        margin: 1px 10px;
+    }
+    .scroll-down {
+        bottom: 60px;
+        margin-left: 10px;
+    }
+}

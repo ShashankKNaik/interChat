@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="/socket.io/socket.io.js"></script>
+   
+    <link rel="shortcut icon" type="image/svg" href="./images/favi.svg"> 
+    <link rel="stylesheet" href="css/style.css">
+    <title>interChat</title>
+</head>
+<body>
+    <div class="main col-sm-7 col-md-6 col-lg-4" id="container">
+        <div class="alert alert-warning float col-sm-6 col-md-5 col-lg-3 col-10" role="alert">
+            <span></span>
+           <button type="button" class="close" onclick="dis()" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+           </button>
+       </div>
+        <div class="nav-body" id="head" >
+            <div class="head chead" >
+                <span class="svg" onclick="leave();location.href='/'">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                    </svg>
+                </span>
+                <img id="img" src="" alt="Loading......">
+                <span id="name" class="pl-1"></span>
+                <span id="indi" class="pl-1" style="font-size: x-small;"></span>
+                
+                <div class="d3">  
+                    <div class="dropdown ">
+                        <svg class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                            <path fill="currentColor" d="M12 7a2 2 0 1 0-.001-4.001A2 2 0 0 0 12 7zm0 2a2 2 0 1 0-.001 3.999A2 2 0 0 0 12 9zm0 6a2 2 0 1 0-.001 3.999A2 2 0 0 0 12 15z"></path>
+                        </svg>
+                        <div class="dropdown-menu mydrop" aria-labelledby="dropdownMenuButton">
+                        <div class="dropdown-item" onclick="clearchat()" >Clear chat</div>
+                        <div class="dropdown-item" onclick="block()">unfollow</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="list" id="body">
+            <div id="messages"></div>
+            <div class="scroll-down">
+                <span >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19 20" width="19" height="20" style="margin-bottom: 10px;">
+                        <path fill="currentColor" d="M3.8 6.7l5.7 5.7 5.7-5.7 1.6 1.6-7.3 7.2-7.3-7.2 1.6-1.6z"></path>
+                    </svg>
+                </span>
+            </div>
+        </div>
+
+        <div id="emoji">
+            <span onclick="showimo(this)">😀</span>,<span onclick="showimo(this)">😁</span>,<span onclick="showimo(this)">😂</span>,<span onclick="showimo(this)">😃</span>,<span onclick="showimo(this)">😄</span>,<span onclick="showimo(this)">😅</span>,<span onclick="showimo(this)">😆</span>,<span onclick="showimo(this)">😇</span>,<span onclick="showimo(this)">😈</span>,<span onclick="showimo(this)">😉</span>,<span onclick="showimo(this)">😊</span>,<span onclick="showimo(this)">😋</span>,<span onclick="showimo(this)">😌</span>,<span onclick="showimo(this)">😍</span>,<span onclick="showimo(this)">😎</span>,<span onclick="showimo(this)">😏</span>,<span onclick="showimo(this)">😐</span>,
+            <span onclick="showimo(this)">😑</span>,<span onclick="showimo(this)">😒</span>,<span onclick="showimo(this)">😓</span>,<span onclick="showimo(this)">😔</span>,<span onclick="showimo(this)">😕</span>,<span onclick="showimo(this)">😖</span>,<span onclick="showimo(this)">😗</span>,<span onclick="showimo(this)">😘</span>,<span onclick="showimo(this)">😙</span>,<span onclick="showimo(this)">😚</span>,<span onclick="showimo(this)">😛</span>,<span onclick="showimo(this)">😜</span>,<span onclick="showimo(this)">😝</span>,<span onclick="showimo(this)">😞</span>,<span onclick="showimo(this)">😟</span>,<span onclick="showimo(this)">😠</span>,<span onclick="showimo(this)">😡</span>,
+            <span onclick="showimo(this)">😢</span>,<span onclick="showimo(this)">😣</span>,<span onclick="showimo(this)">😤</span>,<span onclick="showimo(this)">😥</span>,<span onclick="showimo(this)">😦</span>,<span onclick="showimo(this)">😧</span>,<span onclick="showimo(this)">😨</span>,<span onclick="showimo(this)">😩</span>
+            <span onclick="showimo(this)">😪</span>,<span onclick="showimo(this)">😫</span>,<span onclick="showimo(this)">😬</span>,<span onclick="showimo(this)">😭</span>,<span onclick="showimo(this)">😮</span>,<span onclick="showimo(this)">😯</span>,<span onclick="showimo(this)">😰</span>,<span onclick="showimo(this)">😱</span>,<span onclick="showimo(this)">😲</span>,<span onclick="showimo(this)">😳</span>,<span onclick="showimo(this)">😴</span>,<span onclick="showimo(this)">😵</span>,<span onclick="showimo(this)">😶</span>,<span onclick="showimo(this)">😷</span>,<span onclick="showimo(this)">🙁</span>,<span onclick="showimo(this)">🙂</span>,<span onclick="showimo(this)">🙃</span>
+            <span onclick="showimo(this)">🤐</span>,<span onclick="showimo(this)">🤑</span>,<span onclick="showimo(this)">🤒</span>,<span onclick="showimo(this)">🤓</span>,<span onclick="showimo(this)">🤔</span>,<span onclick="showimo(this)">🤕</span>,<span onclick="showimo(this)">🤖</span>,<span onclick="showimo(this)">🤗</span>,<span onclick="showimo(this)">🤠</span>,<span onclick="showimo(this)">🤡</span>,<span onclick="showimo(this)">🤢</span>,<span onclick="showimo(this)">🤣</span>,<span onclick="showimo(this)">🤤</span>,<span onclick="showimo(this)">🤥</span>,<span onclick="showimo(this)">🤦</span>,<span onclick="showimo(this)">🤧</span>,<span onclick="showimo(this)">🤨</span>,
+            <span onclick="showimo(this)">🤩</span>,<span onclick="showimo(this)">🤪</span>,<span onclick="showimo(this)">🤫</span>,<span onclick="showimo(this)">🤬</span>,<span onclick="showimo(this)">🤭</span>,<span onclick="showimo(this)">🤮</span>,<span onclick="showimo(this)">🤯</span>,<span onclick="showimo(this)">🤰</span>,<span onclick="showimo(this)">🤱</span>,<span onclick="showimo(this)">🤲</span>,<span onclick="showimo(this)">🤳</span>,<span onclick="showimo(this)">🤴</span>,<span onclick="showimo(this)">🤵</span>,<span onclick="showimo(this)">🤶</span>,<span onclick="showimo(this)">🤷</span>,<span onclick="showimo(this)">🤸</span>
+            <span onclick="showimo(this)">🧐</span>,<span onclick="showimo(this)">😸</span>,<span onclick="showimo(this)">😹</span>,<span onclick="showimo(this)">😺</span>,<span onclick="showimo(this)">😻</span>,<span onclick="showimo(this)">😼</span>,<span onclick="showimo(this)">😽</span>,<span onclick="showimo(this)">😾</span>,<span onclick="showimo(this)">😿</span>,<span onclick="showimo(this)">🙀</span>,,<span onclick="showimo(this)">🤘</span>,<span onclick="showimo(this)">🤙</span>,<span onclick="showimo(this)">🤚</span>,<span onclick="showimo(this)">🤛</span>,<span onclick="showimo(this)">🤜</span>,<span onclick="showimo(this)">🤝</span>,<span onclick="showimo(this)">🤞</span>,<span onclick="showimo(this)">🤟</span>
+        </div>
+        <form id="form" action="">
+            <span class="imo" onclick="display()">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="currentColor" d="M9.153 11.603c.795 0 1.439-.879 1.439-1.962s-.644-1.962-1.439-1.962-1.439.879-1.439 1.962.644 1.962 1.439 1.962zm-3.204 1.362c-.026-.307-.131 5.218 6.063 5.551 6.066-.25 6.066-5.551 6.066-5.551-6.078 1.416-12.129 0-12.129 0zm11.363 1.108s-.669 1.959-5.051 1.959c-3.505 0-5.388-1.164-5.607-1.959 0 0 5.912 1.055 10.658 0zM11.804 1.011C5.609 1.011.978 6.033.978 12.228s4.826 10.761 11.021 10.761S23.02 18.423 23.02 12.228c.001-6.195-5.021-11.217-11.216-11.217zM12 21.354c-5.273 0-9.381-3.886-9.381-9.159s3.942-9.548 9.215-9.548 9.548 4.275 9.548 9.548c-.001 5.272-4.109 9.159-9.382 9.159zm3.108-9.751c.795 0 1.439-.879 1.439-1.962s-.644-1.962-1.439-1.962-1.439.879-1.439 1.962.644 1.962 1.439 1.962z"></path>
+                </svg>
+            </span>
+            <input id="input" autocomplete="off" />
+            <button>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M1.101 21.757L23.8 12.028 1.101 2.3l.011 7.912 13.623 1.816-13.623 1.817-.011 7.912z"></path></svg>
+            </button>
+        </form>
+    </div>
+</body>
+
+<script src="./js/chats.js"></script>
+
+</html>
