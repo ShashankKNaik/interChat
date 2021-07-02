@@ -117,7 +117,7 @@ exports.req=(req,res)=>{
                                     })
                                     res.send('true')
                                 }else{
-                                    res.send('ur req is pending or u have follow req form this email')
+                                    res.send('Your request is pending or you have follow request form this email')
                                 }
                             })
                         }else{
@@ -126,11 +126,11 @@ exports.req=(req,res)=>{
                     })
     
                 }else{
-                    res.send('your friend dont have acc')
+                    res.send('your friend dont have account, please share this website link')
                 }
             })
         }else{
-            res.send('cant send req to ur self')
+            res.send('Cant send request to yourself')
         }
     }else{
         res.send('Sorry, you should login first')
